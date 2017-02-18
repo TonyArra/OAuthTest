@@ -23,3 +23,7 @@ Route::get('collections', function() {
 
 Route::post('github/authorize', 'GithubController@authorizeUser');
 Route::get('github/profile', 'GithubController@viewProfile');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

@@ -17,8 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('notes', 'NoteController');
-
-Route::middleware('auth:api')->post('notes/tag/{note}/{tag}', 'NoteController@tag');
-
-//Route::post('notes/tag/{note}/{tag}', 'NoteController@tag');
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('/short', 'UrlMapperController@store');
+    Route::resource('notes', 'NoteController');
+    Route::post('notes/tag/{note}/{tag}', 'NoteController@tag');
+});

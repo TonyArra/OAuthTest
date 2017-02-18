@@ -17,6 +17,8 @@ class NoteController extends Controller
      *
      * Request:
      *      GET /api/notes
+     *      Accept: application/json
+     *      Authorization: Bearer your_api_token
      * Response example:
      *      HTTP 200
      *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
@@ -31,6 +33,9 @@ class NoteController extends Controller
      *
      * Request:
      *      POST /api/notes
+     *      Accept: application/json
+     *      Authorization: Bearer your_api_token
+     *
      *      content: "Pickup milk."
      * Response example:
      *      HTTP 201
@@ -63,6 +68,8 @@ class NoteController extends Controller
      *
      * Request:
      *      GET /api/notes/3
+     *      Accept: application/json
+     *      Authorization: Bearer your_api_token
      * Response example:
      *      HTTP 200
      *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
@@ -79,6 +86,9 @@ class NoteController extends Controller
      * Request:
      *      PUT /api/notes/1 or PATCH /api/notes/3
      *      Content-Disposition: x-www-form-urlencoded
+     *      Accept: application/json
+     *      Authorization: Bearer your_api_token
+     *
      *      content: "Go to the other store."
      * Response example:
      *      HTTP 200
@@ -122,6 +132,8 @@ class NoteController extends Controller
      *
      * Request:
      *      DELETE /api/notes/1
+     *      Accept: application/json
+     *      Authorization: Bearer your_api_token
      * Response example:
      *      HTTP 200
      *      {success: true}
@@ -139,6 +151,8 @@ class NoteController extends Controller
      * Tag a Note
      * Request:
      *      POST /api/notes/tags/1/shopping
+     *      Accept: application/json
+     *      Authorization: Bearer your_api_token
      * Response example:
      *      HTTP 200
      *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
