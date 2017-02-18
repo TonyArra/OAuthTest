@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class App\Http\Controllers\NoteController</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-App.html">
+						App<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-App.Http.html">
+						Http<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-App.Http.Controllers.html">
+						Controllers					</a>
+
+						</li>
+							</ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-App.Http.Controllers.NoteController.html">NoteController</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-App.Http.Controllers.html" title="Summary of App\Http\Controllers"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class NoteController</h1>
+
+
+	<div class="description">
+	<p>CRUD Controller for Notes</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+App\Http\Controllers\Controller
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>App\Http\Controllers\NoteController</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Http.html">Http</a>\<a href="namespace-App.Http.Controllers.html">Controllers</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-App.Http.Controllers.NoteController.html#9-221" title="Go to source code"></a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="index" id="_index">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_index">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#15-29" title="Go to source code">index</a>( )</code>
+
+		<div class="description short">
+			<p>Retrieve a list of Notes</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Retrieve a list of Notes</p>
+
+<p>Request: GET /api/notes Accept: application/json Authorization: Bearer your_api_token
+Response example: HTTP 200 {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="store" id="_store">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_store">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#31-64" title="Go to source code">store</a>( <span>Illuminate\Http\Request <var>$request</var></span> )</code>
+
+		<div class="description short">
+			<p>Create a new Note</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a new Note</p>
+
+<p>Request: POST /api/notes Accept: application/json Authorization: Bearer your_api_token
+ content: "Pickup milk."
+Response example: HTTP 201 Location: http://localhost:8000/api/notes/1 {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
+Error example HTTP 400 {success: false, errors: [{"content must be less than 255 characters"}]}</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="show" id="_show">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_show">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#66-82" title="Go to source code">show</a>( <span>App\Note <var>$note</var></span> )</code>
+
+		<div class="description short">
+			<p>Display the Note specified by a given id</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Display the Note specified by a given id</p>
+
+<p>Request: GET /api/notes/3 Accept: application/json Authorization: Bearer your_api_token
+Response example: HTTP 200 {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
+Error example 1 HTTP 404</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="update" id="_update">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_update">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#84-128" title="Go to source code">update</a>( <span>Illuminate\Http\Request <var>$request</var></span>, <span>App\Note <var>$note</var></span> )</code>
+
+		<div class="description short">
+			<p>Update the Note specified by id
+Request:
+     PUT /api/notes/1 or PATCH /api/notes/3
+     Content-Disposition: x-www-form-urlencoded
+     Accept: application/json
+     Authorization: Bearer your_api_token</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Update the Note specified by id
+Request: PUT /api/notes/1 or PATCH /api/notes/3 Content-Disposition: x-www-form-urlencoded Accept: application/json Authorization: Bearer your_api_token</p>
+
+<p>content: "Go to the other store."
+Response example: HTTP 200 {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Go to the other store.":"[\"shopping\"]"}]}
+Error example HTTP 404
+Error example 2 HTTP 400 {success: false, errors: [{"content must be less than 255 characters"}]}</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="destroy" id="_destroy">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_destroy">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#130-148" title="Go to source code">destroy</a>( <span>App\Note <var>$note</var></span> )</code>
+
+		<div class="description short">
+			<p>Destroy the Note specified by id</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Destroy the Note specified by id</p>
+
+<p>Request: DELETE /api/notes/1 Accept: application/json Authorization: Bearer your_api_token
+Response example: HTTP 200 {success: true}
+Error example HTTP 404</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="tag" id="_tag">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_tag">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#150-182" title="Go to source code">tag</a>( <span>App\Note <var>$note</var></span>, <span> <var>$tag</var></span> )</code>
+
+		<div class="description short">
+			<p>Tag a Note
+Request:
+     POST /api/notes/tags/1/shopping
+     Accept: application/json
+     Authorization: Bearer your_api_token
+Response example:
+     HTTP 200
+     {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
+Error example
+     HTTP 404
+Error example 2
+     HTTP 400
+     {success: false, errors: [{"only 5 tags are allowed per note"}]}</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Tag a Note
+Request: POST /api/notes/tags/1/shopping Accept: application/json Authorization: Bearer your_api_token
+Response example: HTTP 200 {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
+Error example HTTP 404
+Error example 2 HTTP 400 {success: false, errors: [{"only 5 tags are allowed per note"}]}</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="success" id="_success">
+
+		<td class="attributes"><code>
+			 protected 
+
+			Illuminate\Http\JsonResponse
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_success">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#184-202" title="Go to source code">success</a>( <span> <var>$results</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Wrapper for successful responses</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Wrapper for successful responses</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\JsonResponse
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="failure" id="_failure">
+
+		<td class="attributes"><code>
+			 protected 
+
+			Illuminate\Http\JsonResponse
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_failure">#</a>
+		<code><a href="source-class-App.Http.Controllers.NoteController.html#205-219" title="Go to source code">failure</a>( <span> <var>$errors</var></span> )</code>
+
+		<div class="description short">
+			<p>Wrapper for Bad Request (400) response</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Wrapper for Bad Request (400) response</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Illuminate\Http\JsonResponse
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
