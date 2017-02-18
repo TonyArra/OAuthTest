@@ -19,7 +19,7 @@ class NoteController extends Controller
      *      GET /api/notes
      * Response example:
      *      HTTP 200
-     *      {success: true, results: [{id: 1, content: "Pickup milk."}]}
+     *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
      */
     public function index()
     {
@@ -35,17 +35,19 @@ class NoteController extends Controller
      * Response example:
      *      HTTP 201
      *      Location: http://localhost:8000/api/notes/1
-     *      {success: true, results: [{id: 1, content: "Pickup Milk"}]}
+     *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
      * Error example
      *      HTTP 400
      *      {success: false, errors: [{"content must be less than 255 characters"}]}
      */
     public function store(Request $request)
     {
-        $validator = $this->validator($request);
+        $validator =  Validator::make($request->all(), [
+            'content' => 'required|max:255'
+        ]);
 
         if ($validator->fails()) {
-            return $this->failure($validator);
+            return $this->failure($validator->errors());
         }
 
         //safeguarded by fillable array
@@ -63,7 +65,7 @@ class NoteController extends Controller
      *      GET /api/notes/3
      * Response example:
      *      HTTP 200
-     *      {success: true, results: [{id: 3, content: "Go to store."}]}
+     *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
      * Error example 1
      *      HTTP 404
      */
@@ -80,7 +82,7 @@ class NoteController extends Controller
      *      content: "Go to the other store."
      * Response example:
      *      HTTP 200
-     *      {success: true, results: [{id: 3, content: "Go to the other store."}]}
+     *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Go to the other store.":"[\"shopping\"]"}]}
      * Error example
      *      HTTP 404
      * Error example 2
@@ -98,7 +100,7 @@ class NoteController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return $this->failure($validator);
+                return $this->failure($validator->errors());
             }
         } else if ($method === 'PATCH') {  //Validated without "required" for PATCH
             $validator = Validator::make($input, [
@@ -106,7 +108,7 @@ class NoteController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return $this->failure($validator);
+                return $this->failure($validator->errors());
             }
         }
 
@@ -131,6 +133,38 @@ class NoteController extends Controller
         $note->delete();
 
         return $this->success();
+    }
+
+    /**
+     * Tag a Note
+     * Request:
+     *      POST /api/notes/tags/1/shopping
+     * Response example:
+     *      HTTP 200
+     *      {"success":true,"results":[{"id":2,"created_at":"2017-02-17 19:45:01","updated_at":"2017-02-17 19:45:04","content":"test","Pickup milk.":"[\"shopping\"]"}]}
+     * Error example
+     *      HTTP 404
+     * Error example 2
+     *      HTTP 400
+     *      {success: false, errors: [{"only 5 tags are allowed per note"}]}
+     */
+    public function tag(Note $note, $tag)
+    {
+        if (strlen($tag) > 30) {
+            return $this->failure(["tag must be less than 31 characters"]);
+        }
+
+        $tags = json_decode($note->tags);
+
+        if (count($tags) >= 5 ) {
+            return $this->failure(["only 5 tags are allowed per note"]);
+        }
+
+        $tags[] = $tag;
+        $note->tags = json_encode($tags);
+        $note->save();
+
+        return $this->success($note);
     }
 
     /**
@@ -159,11 +193,11 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function failure($validator)
+    protected function failure($errors)
     {
         $data = [
             'success' => false,
-            'errors' => $validator->errors(),
+            'errors' => $errors,
         ];
 
         return response()->json($data)

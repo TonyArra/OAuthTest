@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateNotesTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -17,6 +18,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('content', 255);
+            $table->json('tags');
         });
     }
 
@@ -29,4 +31,5 @@ class CreateNotesTable extends Migration
     {
         Schema::dropIfExists('notes');
     }
+
 }

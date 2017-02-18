@@ -18,3 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('notes', 'NoteController');
+
+Route::middleware('auth:api')->post('notes/tag/{note}/{tag}', 'NoteController@tag');
+
+//Route::post('notes/tag/{note}/{tag}', 'NoteController@tag');

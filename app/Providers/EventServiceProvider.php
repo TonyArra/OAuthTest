@@ -15,7 +15,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
-        ],
+        ], 'App\Events\NoteCreating' => [
+            'App\Listeners\NoteCreatingListener'
+        ]
     ];
 
     /**
